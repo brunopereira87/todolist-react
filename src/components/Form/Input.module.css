@@ -1,0 +1,20 @@
+.input {
+  margin-bottom: 1rem;
+}
+.input label{
+  display: block;
+  font-weight: 700;
+  margin-bottom: .3rem;
+  color: var(--color-dark);
+}
+
+.input input{
+  padding: .3em;
+  width: 100%;
+}
+
+.error{
+  font-size: .8rem;
+  color: var(--color-error);
+  margin-top: .2rem;
+}

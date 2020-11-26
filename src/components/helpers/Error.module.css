@@ -1,0 +1,8 @@
+.error p{
+  color: var(--color-error);
+  margin: 1rem 0;
+  width: 100%;
+  border: 2px solid var(--color-error);
+  background-color: tomato;
+  padding: 1rem;
+}
