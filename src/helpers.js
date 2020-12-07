@@ -19,5 +19,26 @@ export const filterObjects = (obj_arrays, ids_array) => {
 }
 
 export const categoriesIconsList = [
-  ""
+  "fas fa-at",
+  "fas fa-baby-carriage",
+  "fas fa-baby",
+  "fas fa-biking",
+  "fas fa-book",
+  "fas fa-book-reader",
+  "fas fa-business-time",
+  "fas fa-camera-retro",
+  "fas fa-cart-arrow-down",
+  "fas fa-dog",
+  "fas fa-futbol",
+  "fas fa-gamepad",
+  "fas fa-heart",
+  "fas fa-laptop",
+  "fas fa-money-bill",
+  "fas fa-paint-brush",
+  "fas fa-pen",
+  "fas fa-phone",
+  "fas fa-school",
+  "fas fa-shopping-cart",
+  "fas fa-swimmer",
+  "fas fa-umbrella-beach"
 ]

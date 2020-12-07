@@ -42,3 +42,13 @@ export const USER_GET = (token) => {
     }
   }
 }
+
+export const CATEGORY_POST = (token) => {
+  return {
+    url: `${DB_URL}/categories.json?key=${API_KEY}`,
+    options: {
+      method: 'POST',
+      body: JSON.stringify({ idToken: token })
+    }
+  }
+}

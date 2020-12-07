@@ -1,0 +1,66 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Trabalho"
+    },
+    {
+      "id": 2,
+      "name": "Lazer"
+    },
+    {
+      "id": 3,
+      "name": "Estudo"
+    }
+  ],
+  "tarefas": [
+    {
+      "id": 1,
+      "name": "Estudar programação",
+      "description": "Estudar React",
+      "day": "12/12/2021",
+      "period": "09:50",
+      "categoriesId": 3,
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "name": "Desenvolver a página Resultado de Times do MyGuild",
+      "description": "Estudar React",
+      "day": "12/12/2021",
+      "period": "09:50",
+      "categoriesId": 1,
+      "userId": 1
+    },
+    {
+      "id": 3,
+      "name": "Jogar video game",
+      "description": "Jogar Far Cry 3 e Forza Horizon 4",
+      "day": "12/12/2021",
+      "period": "09:50",
+      "categoriesId": 2,
+      "userId": 1
+    },
+    {
+      "id": 4,
+      "name": "Assistir anime",
+      "description": "Assistir Shingeki no Kyojin",
+      "day": "12/12/2021",
+      "period": "09:50",
+      "categoriesId": 2,
+      "userId": 1
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Bruno Pereira",
+      "email": "bruno@hotmail.com"
+    },
+    {
+      "email": "bruno@email.com",
+      "password": "$2a$10$kcKNYmu.oxBvOJUKgrNjNOkU2uQ4ubOehCkZxh3JbamseW.XhnRey",
+      "id": 2
+    }
+  ]
+}

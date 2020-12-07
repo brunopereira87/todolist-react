@@ -1,0 +1,10 @@
+.categories{}
+.newCategoryTitle {
+  display: flex;
+  align-items: center;
+}
+
+.newCategoryTitle p{
+  color: var(--color-dark);
+  margin-right: .5rem;
+}

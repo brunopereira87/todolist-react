@@ -5,7 +5,6 @@
 body{
   padding-top: 4rem;
   margin: 0px;
-  color: #333;
   --type-first: Helvetica,Arial, sans-serif;
   --type-second: 'Spectral', Georgia;
   --color-first:#25BD73;
@@ -13,6 +12,7 @@ body{
   --color-dark:#3F7058;
   --color-light:#FFF;
   --color-error:#c70d0d;
+  color: var(--color-dark);
   font-family: var(--type-first);
 }
 
@@ -26,8 +26,10 @@ p {
 
 .title{
   font-size: 2rem;
-  margin-bottom: 3rem;
   color: var(--color-dark);
+}
+.section-title{
+  margin-bottom: 1rem;
 }
 a {
   text-decoration: none;
@@ -69,12 +71,34 @@ a {
   text-decoration: none;
 }
 
+.btn-icon{
+  background: rgba(128, 255, 193, 0.44);
+  outline: none;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  color: var(--color-dark);
+}
+.btn-icon:hover{
+  border-color: var(--color-first);
+}
+.btn-icon:hover > i{
+  color: var(--color-first);
+}
+.btn-icon-second{
+  border: 1px solid var(--color-dark);
+  background-color: white;
+}
+
 .container {
   max-width: 50rem;
   padding: 0 1rem;
   margin: 0 auto;
 }
 
+.mainContainer{
+  margin-top: 4rem;
+}
 section {
   margin-top: 3rem;
 }

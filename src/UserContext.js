@@ -12,7 +12,6 @@ export const UserStorage = ({ children }) => {
   const navigate = useNavigate();
 
   const userLogout = React.useCallback(async function () {
-    console.log('rodou callback')
     setData(null);
     setLogin(false);
     removeToken();
@@ -21,7 +20,6 @@ export const UserStorage = ({ children }) => {
     navigate('/login');
   }, [navigate, setError, setLoading])
   React.useEffect(() => {
-    console.log('rodou effect')
     async function autoLogin() {
       const token = getToken();
 
@@ -46,7 +44,6 @@ export const UserStorage = ({ children }) => {
   async function userLogin(email, password) {
     const { url, options } = LOGIN({ email, password, returnSecureToken: true });
     const { response, json } = await request(url, options);
-    console.log('json:', json)
 
     if (response.ok) {
       storeLoginResponse(json);
@@ -57,7 +54,10 @@ export const UserStorage = ({ children }) => {
 
 
   function storeLoginResponse(json) {
-    setToken(json.idToken);
+    let token = getToken();
+    if (!token) token = json.idToken
+
+    setToken(token);
     setData(json);
     setLogin(true);
   }
@@ -65,8 +65,6 @@ export const UserStorage = ({ children }) => {
     const { url, options } = USER_GET(token);
     const { response, json } = request(url, options);
 
-    console.log('user response:', response)
-    console.log('user json:', json)
     if (response.ok) {
       setToken(json.idToken);
       setData(json);
