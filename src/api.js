@@ -1,7 +1,7 @@
-export const API_KEY = 'AIzaSyBEzk96h51_HpUMPQmDDkh3P9AWZcfqvqc';
+
 export const AUTH_URL = `https://identitytoolkit.googleapis.com/v1/accounts:`
 export const BASE_URL = 'http://localhost:3001';
-export const SIGNUP_URL = `${BASE_URL}/register`;
+export const SIGNUP_URL = `${BASE_URL}/users`;
 export const USERS_URL = `${BASE_URL}/users`;
 
 export const REGISTER_USER = (body) => {
@@ -29,7 +29,7 @@ export const SIGNUP = (body) => {
     }
   }
 }
-export const GET_USER_BY_CREDENTIALS = (email, password) => {
+export const LOGIN = (email, password) => {
 
   return {
     url: `${USERS_URL}?email=${email}&password=${password}`,
@@ -41,7 +41,19 @@ export const GET_USER_BY_CREDENTIALS = (email, password) => {
     }
   }
 }
-export const LOGIN = (id, body) => {
+export const GET_USER_BY_EMAIL = (email) => {
+
+  return {
+    url: `${USERS_URL}?email=${email}`,
+    options: {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'GET'
+    }
+  }
+}
+export const UPDATE_TOKEN = (id, body) => {
   const { accessToken, tokenExpire } = body;
   console.log('ID:', id)
   return {
@@ -58,9 +70,10 @@ export const LOGIN = (id, body) => {
     }
   }
 }
-export const USER_AUTH = (endpoint) => {
+export const USER_AUTH = (token) => {
+  const now = Date.now();
   return {
-    url: `${BASE_URL}/600/${endpoint}`,
+    url: `${USERS_URL}?accessToken=${token}&tokenExpire_gte=${now}`,
     options: {
       method: 'GET',
     }
@@ -69,7 +82,7 @@ export const USER_AUTH = (endpoint) => {
 
 export const CATEGORY_POST = (token) => {
   return {
-    url: `${BASE_URL}/categories.json?key=${API_KEY}`,
+    url: `${BASE_URL}/categories`,
     options: {
       headers: {
         'Content-Type': 'application/json'

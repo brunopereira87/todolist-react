@@ -57,8 +57,16 @@
       "password": "qwe123",
       "name": "Bruno Pereira",
       "id": 1,
-      "accessToken": "3529ad957fd1ee110c233bf44d9c5f35",
-      "tokenExpire": 1607952632281
+      "accessToken": "0b6d92a97600912133b9f26835a46a3e",
+      "tokenExpire": 1608038787254
+    },
+    {
+      "name": "Carlos Humberto",
+      "email": "carlos@email.com",
+      "password": "qwe123",
+      "accessToken": "94348b13f9b995e207fff27672d7b114",
+      "tokenExpire": 1608034352117,
+      "id": 2
     }
   ]
 }

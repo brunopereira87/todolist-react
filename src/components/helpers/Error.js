@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Error.module.css'
-const Error = ({ error }) => {
+const ErrorComponent = ({ error }) => {
   if (!error) return null;
 
   return (
@@ -10,4 +10,4 @@ const Error = ({ error }) => {
   )
 }
 
-export default Error
+export default ErrorComponent;

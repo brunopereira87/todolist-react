@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import { GET_USER_BY_CREDENTIALS, LOGIN, USER_AUTH } from './api';
+import { UPDATE_TOKEN, LOGIN, USER_AUTH } from './api';
 import { setToken, removeToken, getToken } from './helpers';
 import useFetch from './hooks/useFetch';
 import md5 from 'crypto-js/md5';
@@ -24,17 +24,16 @@ export const UserStorage = ({ children }) => {
     async function autoLogin() {
       const token = getToken();
 
-
       if (token) {
         try {
           const { url, options } = USER_AUTH(token);
           const { response, json } = await request(url, options);
-          console.log('user auth response:', response)
-          console.log('user auth json:', json)
+
           if (!response.ok) throw new Error('Token inválido ou expirado. Faça o login novamente!');
-          storeLoginResponse(json.users[0]);
+          storeLoginResponse(json[0]);
         } catch (err) {
           setError(err.message);
+          console.log(err.message);
           userLogout();
         }
       } else {
@@ -48,10 +47,10 @@ export const UserStorage = ({ children }) => {
 
     try {
       const hashBase = email + Date.now() + Math.floor(Math.random() * (100 - 1))
-      console.log('hashbase:', hashBase);
       const accessToken = md5(hashBase).toString()
       const tokenExpire = Date.now() + (1000 * 60 * 60);
-      let api_obj = GET_USER_BY_CREDENTIALS(email, password);
+
+      let api_obj = LOGIN(email, password);
       let url = api_obj.url
       let options = api_obj.options
 
@@ -60,23 +59,19 @@ export const UserStorage = ({ children }) => {
       let json = request_obj.json;
 
       if (response.ok === false) throw new Error('Email ou senha incorretos');
-      api_obj = LOGIN(json[0].id, { accessToken, tokenExpire });
+      api_obj = UPDATE_TOKEN(json[0].id, { accessToken, tokenExpire });
       url = api_obj.url
       options = api_obj.options
       request_obj = await request(url, options);
       response = request_obj.response;
       json = request_obj.json;
-
-      console.log('response:', response);
-      console.log('json:', json);
-      //storeLoginResponse(json);
-      // navigate('/tarefas');
+      storeLoginResponse(json);
+      navigate('/tarefas');
     } catch (err) {
-      console.log(err.message);
+      setError(err.message);
     }
 
   }
-
 
   function storeLoginResponse(json) {
     let token = getToken();
@@ -102,6 +97,7 @@ export const UserStorage = ({ children }) => {
 
   return (
     <UserContext.Provider value={{
+      login,
       userLogin,
       setLogin,
       getUser,
