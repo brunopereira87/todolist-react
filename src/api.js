@@ -1,13 +1,16 @@
 export const API_KEY = 'AIzaSyBEzk96h51_HpUMPQmDDkh3P9AWZcfqvqc';
 export const AUTH_URL = `https://identitytoolkit.googleapis.com/v1/accounts:`
-export const SIGNUP_URL = `${AUTH_URL}signUp?key=${API_KEY}`;
-export const LOGIN_URL = `${AUTH_URL}signInWithPassword?key=${API_KEY}`;
-export const DB_URL = 'https://to-do-list-3bf7f.firebaseio.com'
+export const BASE_URL = 'http://localhost:3001';
+export const SIGNUP_URL = `${BASE_URL}/register`;
+export const USERS_URL = `${BASE_URL}/users`;
 
 export const REGISTER_USER = (body) => {
   return {
-    url: `${AUTH_URL}update?key=${API_KEY}`,
+    url: SIGNUP_URL,
     options: {
+      headers: {
+        'Content-Type': 'application/json'
+      },
       method: 'POST',
       body: JSON.stringify(body)
     }
@@ -18,37 +21,61 @@ export const SIGNUP = (body) => {
   return {
     url: SIGNUP_URL,
     options: {
+      headers: {
+        'Content-Type': 'application/json'
+      },
       method: 'POST',
       body: JSON.stringify(body)
     }
   }
 }
-export const LOGIN = (body) => {
-  return {
-    url: LOGIN_URL,
-    options: {
-      method: 'POST',
-      body: JSON.stringify(body)
-    }
-  }
-}
+export const GET_USER_BY_CREDENTIALS = (email, password) => {
 
-export const USER_GET = (token) => {
   return {
-    url: `${AUTH_URL}lookup?key=${API_KEY}`,
+    url: `${USERS_URL}?email=${email}&password=${password}`,
     options: {
-      method: 'POST',
-      body: JSON.stringify({ idToken: token })
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'GET'
+    }
+  }
+}
+export const LOGIN = (id, body) => {
+  const { accessToken, tokenExpire } = body;
+  console.log('ID:', id)
+  return {
+    url: `${USERS_URL}/${id}`,
+    options: {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'PATCH',
+      body: JSON.stringify({
+        accessToken,
+        tokenExpire
+      })
+    }
+  }
+}
+export const USER_AUTH = (endpoint) => {
+  return {
+    url: `${BASE_URL}/600/${endpoint}`,
+    options: {
+      method: 'GET',
     }
   }
 }
 
 export const CATEGORY_POST = (token) => {
   return {
-    url: `${DB_URL}/categories.json?key=${API_KEY}`,
+    url: `${BASE_URL}/categories.json?key=${API_KEY}`,
     options: {
+      headers: {
+        'Content-Type': 'application/json'
+      },
       method: 'POST',
-      body: JSON.stringify({ idToken: token })
+      body: JSON.stringify({ accessToken: token })
     }
   }
 }

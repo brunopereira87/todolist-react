@@ -20,13 +20,13 @@ const Register = () => {
   async function handleSubmit(event) {
     event.preventDefault();
     const { url, options } = SIGNUP({
-      displayName: name.value,
+      name: name.value,
       email: email.value,
-      password: password.value,
-      returnSecureToken: true
+      password: password.value
     })
     const { response, json } = await request(url, options);
-
+    console.log('response:', response)
+    console.log('json:', json)
     if (response.ok) {
       storeLoginResponse(json);
       navigate('tarefas');
@@ -48,7 +48,7 @@ const Register = () => {
 
   // async function register(token) {
   //   const { url, options } = REGISTER_USER({
-  //     idToken: token,
+  //     accessToken: token,
   //     displayName: name.value,
   //     returnSecureToken: true
   //   });

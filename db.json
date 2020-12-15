@@ -53,14 +53,12 @@
   ],
   "users": [
     {
-      "id": 1,
-      "name": "Bruno Pereira",
-      "email": "bruno@hotmail.com"
-    },
-    {
       "email": "bruno@email.com",
-      "password": "$2a$10$kcKNYmu.oxBvOJUKgrNjNOkU2uQ4ubOehCkZxh3JbamseW.XhnRey",
-      "id": 2
+      "password": "qwe123",
+      "name": "Bruno Pereira",
+      "id": 1,
+      "accessToken": "3529ad957fd1ee110c233bf44d9c5f35",
+      "tokenExpire": 1607952632281
     }
   ]
 }

@@ -1,13 +1,13 @@
 export const getToken = () => {
-  const token = window.localStorage.getItem('idToken');
+  const token = window.localStorage.getItem('accessToken');
   return token;
 };
 
 export const setToken = (token) => {
-  window.localStorage.setItem('idToken', token);
+  window.localStorage.setItem('accessToken', token);
 };
 export const removeToken = () => {
-  window.localStorage.removeItem('idToken');
+  window.localStorage.removeItem('accessToken');
 }
 
 export const filterObjects = (obj_arrays, ids_array) => {
